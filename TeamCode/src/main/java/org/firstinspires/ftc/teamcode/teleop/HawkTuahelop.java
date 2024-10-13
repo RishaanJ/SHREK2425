@@ -3,8 +3,11 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
+import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
+
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 
 @TeleOp(name = "HawkTuaheleop")
@@ -25,6 +28,16 @@ public class HawkTuahelop extends LinearOpMode {
 
         // Wait for the Start button to be pressed
         waitForStart();
+
+        RevColorSensorV3 sensor = hardwareMap.get(RevColorSensorV3.class, "Color");
+
+        while (opModeIsActive()) {
+            // read all 3 color channels in one I2C transmission:
+            NormalizedRGBA colors = sensor.getNormalizedColors();
+            telemetry.addData("rgb: ", colors.red + " " + colors.blue + " " + colors.green);
+            telemetry.update();
+        }
+
 
         limelight.start();
         while (opModeIsActive()) {
