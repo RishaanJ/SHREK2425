@@ -15,7 +15,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 public class HawkTuahelop extends LinearOpMode {
     private Limelight3A limelight;
 
-    // Constants for distance calculation dafasfd
+    // Constants for distance calculation dafasfdeee
     private static final double MAX_DISTANCE = 100.0; // Maximum distance for calculation (in inches)
     private static final double MIN_DISTANCE = 10.0;  // Minimum distance for calculation (in inches)
     private static final double MAX_PERCENTAGE = 100.0; // 100% area of the screen
