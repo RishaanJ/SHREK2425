@@ -1,25 +1,32 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
+import org.firstinspires.ftc.teamcode.subsystem.Intake;
+import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 
-@TeleOp(name = "HelloWorldOpMode")
+@TeleOp(name = "IntakeTest")
+@Config
 public class HelloWorld extends LinearOpMode {
+    private Intake intake;
+
     @Override
-    public void runOpMode() throws InterruptedException {
-        // Wait for the game to start (driver presses PLAY)
+    public void runOpMode() {
+        CRServo servo = hardwareMap.get(CRServo.class, "intakeServo");
+        intake = new Intake(servo);
+
         waitForStart();
 
-        // Main loop
         while (opModeIsActive()) {
-            // Display Hello World on the Driver Station
-            telemetry.addData("Message", "Hello World!");
-            telemetry.update();
+            if (gamepad1.x) {
+                intake.runServo(1.0); // Full speed forward
+            } else {
+                intake.stopServo(); // Stop the servo
+            }
 
-            // Optional: Add a small delay to make the loop more manageable
-            sleep(100); // Sleep for 100 milliseconds
+            telemetry.addData("Servo Power", servo.getPower());
+            telemetry.update();
         }
     }
-
-
 }
