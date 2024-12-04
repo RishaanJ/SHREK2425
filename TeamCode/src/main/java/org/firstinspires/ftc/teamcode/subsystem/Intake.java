@@ -5,17 +5,17 @@ import com.qualcomm.robotcore.hardware.CRServo;
 public class Intake {
     private CRServo intakeServo;
 
-    // Constructor to initialize the servo
+    // init servo
     public Intake(CRServo intakeServo) {
         this.intakeServo = intakeServo;
     }
 
-    // Method to run the servo at a specific power
+    // function to run servo provide a power input
     public void runServo(double power) {
         intakeServo.setPower(power);
     }
 
-    // Method to stop the servo
+    // func to stop servo
     public void stopServo() {
         intakeServo.setPower(0);
     }

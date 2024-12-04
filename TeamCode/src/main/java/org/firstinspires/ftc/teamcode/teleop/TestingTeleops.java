@@ -7,9 +7,9 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import org.firstinspires.ftc.teamcode.subsystem.Drive;
 import org.firstinspires.ftc.teamcode.subsystem.Intake;
 
-@TeleOp(name = "HelloWorld")
+@TeleOp(name = "TestingTeleops")
 @Config
-public class HelloWorld extends LinearOpMode {
+public class TestingTeleops extends LinearOpMode {
     private Intake intake;
     private Drive drive;
 
